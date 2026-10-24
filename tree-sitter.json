@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "fluke",
+      "camelcase": "Fluke",
+      "title": "Fluke",
+      "scope": "source.fluke",
+      "file-types": [
+        "fl"
+      ],
+      "injection-regex": "^fluke$",
+      "class-name": "TreeSitterFluke",
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Fluke grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "bolli24"
+      }
+    ],
+    "links": {
+      "repository": ""
+    }
+  },
+  "bindings": {
+    "c": false,
+    "go": false,
+    "java": false,
+    "node": true,
+    "python": false,
+    "rust": true,
+    "swift": false,
+    "zig": false
+  }
+}

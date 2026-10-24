@@ -1,0 +1,108 @@
+================================================================================
+Let and assignment
+================================================================================
+
+let x = 10;
+x = 20;
+p.pos.x = 7;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (let_statement
+    (identifier)
+    (integer_literal))
+  (assignment_statement
+    (identifier)
+    (integer_literal))
+  (assignment_statement
+    (field_expression
+      (field_expression
+        (identifier)
+        (identifier))
+      (identifier))
+    (integer_literal)))
+
+================================================================================
+Return
+================================================================================
+
+fn f(x: int): int {
+    return x * 2;
+    return;
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (identifier)))
+    (identifier)
+    (block
+      (return_statement
+        (binary_expression
+          (identifier)
+          (integer_literal)))
+      (return_statement))))
+
+================================================================================
+Block-like statements without semicolons
+================================================================================
+
+if true then {
+    :print("a");
+}
+{
+    let y = 1;
+}
+{ 1 } + 2;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (expression_statement
+    (if_expression
+      (boolean_literal)
+      (block
+        (expression_statement
+          (intrinsic_call
+            (identifier)
+            (argument_list
+              (string_literal)))))))
+  (expression_statement
+    (block
+      (let_statement
+        (identifier)
+        (integer_literal))))
+  (expression_statement
+    (binary_expression
+      (block
+        (integer_literal))
+      (integer_literal))))
+
+================================================================================
+Comments
+================================================================================
+
+// line
+let c = a /* inline */ / b; // trailing
+/*
+   multi
+*/
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line_comment)
+  (let_statement
+    (identifier)
+    (binary_expression
+      (identifier)
+      (block_comment)
+      (identifier)))
+  (line_comment)
+  (block_comment))

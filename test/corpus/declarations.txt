@@ -1,0 +1,114 @@
+================================================================================
+Functions
+================================================================================
+
+fn add(a: int, b: int): int {
+    a + b
+}
+
+fn no_op() {}
+
+fn mutate(p: ref Point) {
+    p.x = 1;
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (identifier))
+      (parameter
+        (identifier)
+        (identifier)))
+    (identifier)
+    (block
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (function_declaration
+    (identifier)
+    (parameter_list)
+    (block))
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (ref_modifier)
+        (identifier)))
+    (block
+      (assignment_statement
+        (field_expression
+          (identifier)
+          (identifier))
+        (integer_literal)))))
+
+================================================================================
+Structs
+================================================================================
+
+struct Point {
+    x: int,
+    y: int,
+}
+
+struct Unit {}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_declaration
+    (identifier)
+    (field_declaration_list
+      (field_declaration
+        (identifier)
+        (identifier))
+      (field_declaration
+        (identifier)
+        (identifier))))
+  (struct_declaration
+    (identifier)
+    (field_declaration_list)))
+
+================================================================================
+Enums
+================================================================================
+
+enum Empty {}
+
+enum Shape {
+    Point,
+    Circle { radius: int },
+    Rect { width: int, height: int },
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (enum_declaration
+    (identifier)
+    (enum_variant_list))
+  (enum_declaration
+    (identifier)
+    (enum_variant_list
+      (enum_variant
+        (identifier))
+      (enum_variant
+        (identifier)
+        (field_declaration_list
+          (field_declaration
+            (identifier)
+            (identifier))))
+      (enum_variant
+        (identifier)
+        (field_declaration_list
+          (field_declaration
+            (identifier)
+            (identifier))
+          (field_declaration
+            (identifier)
+            (identifier)))))))
